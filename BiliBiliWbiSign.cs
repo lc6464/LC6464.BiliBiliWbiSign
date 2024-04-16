@@ -75,10 +75,11 @@ public static class WbiSign {
 
 		parameters = parameters.OrderBy(p => p.Key).ToDictionary(p => p.Key, p => p.Value); // 按照 key 重排参数
 
+		// 过滤 value 中的 "!'()*" 字符
 		parameters = parameters.ToDictionary(
 			p => p.Key,
 			p => valueFilter.Replace(p.Value, "")
-		); // 过滤 value 中的 "!'()*" 字符
+		);
 
 		var query = await CreateQueryStringAsync(parameters); // 序列化参数
 
