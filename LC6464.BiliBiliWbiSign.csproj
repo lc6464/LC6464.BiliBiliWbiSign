@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+		<SignAssembly>True</SignAssembly>
+		<AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<Description>哔哩哔哩所使用的 WBI 签名的计算器。</Description>
+		<Copyright>Copyright © 2024 LC. All rights reserved.</Copyright>
+		<PackageProjectUrl>https://github.com/lc6464/LC6464.BiliBiliWbiSign</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/lc6464/LC6464.BiliBiliWbiSign</RepositoryUrl>
+		<PackageTags>BiliBili;WBI;Sign;Web</PackageTags>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+		<Authors>LC</Authors>
+		<Version>1.0.0</Version>
+		<PackageReleaseNotes>初始代码。</PackageReleaseNotes>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Using Include="System.Net.Http.Json" />
+		<Using Include="System.Security.Cryptography" />
+		<Using Include="System.Text" />
+		<Using Include="System.Text.RegularExpressions" />
+		<Using Include="System.Text.Json.Serialization" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+
+</Project>
