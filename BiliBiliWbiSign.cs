@@ -32,13 +32,12 @@ public static class WbiSign {
 			return;
 		}
 
-		if (httpClient is null) {
+		if (httpClient is null) { // 如果未传入 HttpClient，则创建一个新的
 			HttpClient = new() {
 				Timeout = TimeSpan.FromSeconds(5)
 			};
-			HttpClient.DefaultRequestHeaders.UserAgent.Clear();
-			HttpClient.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36");
-		} else {
+			HttpClient.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36");
+		} else { // 否则使用传入的 HttpClient
 			HttpClient = httpClient;
 		}
 
@@ -54,6 +53,7 @@ public static class WbiSign {
 
 		var wbiImg = (await HttpClient!.GetFromJsonAsync<APIRoot>("https://api.bilibili.com/x/web-interface/nav").ConfigureAwait(false)).Data.WbiImg;
 
+		// URL 中的文件名即为 key，文件实际不存在
 		var imgKey = Path.GetFileNameWithoutExtension(wbiImg.ImgUrl.Segments.Last());
 		var subKey = Path.GetFileNameWithoutExtension(wbiImg.SubUrl.Segments.Last());
 
